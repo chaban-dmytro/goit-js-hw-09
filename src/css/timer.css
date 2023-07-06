@@ -1,0 +1,25 @@
+#datetime-picker {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.field {
+  width: 75px;
+  text-align: center;
+}
+
+.value {
+  display: block;
+  font-size: 40px;
+}
+
+.button--inactive {
+  cursor: auto;
+  pointer-events: none;
+  opacity: 0.5;
+}
