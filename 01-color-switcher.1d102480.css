@@ -1,0 +1,2 @@
+body{transition:background-color .3s ease-in}.button-wrapper{height:100vh;justify-content:center;align-items:center;display:flex}button{text-transform:uppercase;cursor:pointer;padding:10px;font-family:Montserrat,sans-serif;transition:transform .2s ease-in}button:hover{transform:scale(1.1)}button[data-start]{margin-right:5px}.button-dissable{opacity:.5;pointer-events:none}
+/*# sourceMappingURL=01-color-switcher.1d102480.css.map */
