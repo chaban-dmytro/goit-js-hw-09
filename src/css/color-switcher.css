@@ -1,0 +1,32 @@
+body {
+  transition: background-color 0.3s ease-in;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+button {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  padding: 10px;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in;
+  transition: transform 0.2s ease-in;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+button[data-start] {
+  margin-right: 5px;
+}
+
+.button-dissable {
+  opacity: 0.5;
+  pointer-events: none;
+}
