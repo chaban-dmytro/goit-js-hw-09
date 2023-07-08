@@ -1,5 +1,4 @@
 import Notiflix from 'notiflix'
-const flatpickr = require( "flatpickr" );
 
 const formEl = document.querySelector( 'form' );
 formEl.addEventListener( 'input', checkInput );
@@ -11,11 +10,26 @@ let amount = 0;
 
 function checkInput( event ) {
   if ( event.target.name === 'delay' ) {
-    delay = Number(event.target.value);
+    if ( Number( event.target.value ) < 0 ) {
+      Notiflix.Notify.failure( `Значення в полі ${event.target.name} не може бути відємним!` );
+      event.target.value = '';
+    } else {
+      delay = Number( event.target.value );
+    }  
   } else if ( event.target.name === 'step' ) {
-    step = Number(event.target.value);
+    if ( Number( event.target.value ) < 0 ) {
+      Notiflix.Notify.failure( `Значення в полі ${event.target.name} не може бути відємним!` );
+      event.target.value = '';
+    } else {
+      step = Number( event.target.value );
+    }  
   } else if (event.target.name === 'amount' ) {
-    amount = Number(event.target.value);
+    if ( Number( event.target.value ) < 0 ) {
+      Notiflix.Notify.failure( `Значення в полі ${event.target.name} не може бути відємним!` );
+      event.target.value = '';
+    } else {
+      amount = Number( event.target.value );
+    }  
   }  
 }
 
@@ -37,11 +51,9 @@ function submitForm( event ) {
   for ( let i = 1; i <= amount; i += 1 ) {
     createPromise( i, delay )
     .then(({ position, delay }) => {
-      // console.log( `✅ Fulfilled promise ${position} in ${delay}ms` );
       Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
     })
     .catch(({ position, delay }) => {
-      // console.log( `❌ Rejected promise ${position} in ${delay}ms` );
       Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms` );
     } );
     delay = delay + step;

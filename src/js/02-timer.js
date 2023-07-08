@@ -2,16 +2,11 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import Notiflix from 'notiflix'
 
-// console.log(flatpickr);
-
-const flatpickr = require( "flatpickr" );
-// const inputEl = document.querySelector( '#datetime-picker' );
 const buttonStartEl = document.querySelector( 'button[data-start]');
 const daysEl = document.querySelector( 'span[data-days]' );
 const hoursEl = document.querySelector( 'span[data-hours]' );
 const minutesEl = document.querySelector( 'span[data-minutes]' );
 const secondsEl = document.querySelector( 'span[data-seconds]' );
-
 
 buttonStartEl.classList.add( 'button--inactive' );
 buttonStartEl.addEventListener( 'click', startTimer);
@@ -19,7 +14,7 @@ buttonStartEl.addEventListener( 'click', startTimer);
 const currentDate = new Date();
 let dateFromUsrer;
 
-flatpickr ( 'input[type="text"]', {
+flatpickr ( '#datetime-picker', {
   enableTime: true,
   time_24hr: true,
   defaultDate: currentDate,
@@ -38,16 +33,20 @@ function startTimer() {
   const id = setInterval( () => {
     const current = new Date();
     const timerTime = convertMs( dateFromUsrer - current );
-    if (timerTime.seconds >= 0) {
-      daysEl.textContent = timerTime.days.toString().padStart(2, '0');
-      hoursEl.textContent = timerTime.hours.toString().padStart(2, '0');
-      minutesEl.textContent = timerTime.minutes.toString().padStart(2, '0');
-      secondsEl.textContent = timerTime.seconds.toString().padStart( 2, '0' );
+    if ( timerTime.seconds >= 0 ) {
+      drawingTextContent(timerTime)
     } else {
       clearInterval( id );
       Notiflix.Notify.success('Congratulation! Time is ower.');
     }
   }, 1000)
+}
+
+function drawingTextContent(timerTime) {
+  daysEl.textContent = timerTime.days.toString().padStart(2, '0');
+  hoursEl.textContent = timerTime.hours.toString().padStart(2, '0');
+  minutesEl.textContent = timerTime.minutes.toString().padStart(2, '0');
+  secondsEl.textContent = timerTime.seconds.toString().padStart( 2, '0' );
 }
 
 function convertMs(ms) {
