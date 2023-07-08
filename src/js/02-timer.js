@@ -17,7 +17,7 @@ buttonStartEl.addEventListener( 'click', startTimer);
 const currentDate = new Date();
 let dateFromUsrer;
 
-flatpickr( inputEl, {
+flatpickr ( inputEl, {
   enableTime: true,
   time_24hr: true,
   defaultDate: currentDate,
