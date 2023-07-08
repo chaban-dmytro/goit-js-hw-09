@@ -5,7 +5,7 @@ import Notiflix from 'notiflix'
 // console.log(flatpickr);
 
 const flatpickr = require( "flatpickr" );
-const inputEl = document.querySelector( '#datetime-picker' );
+// const inputEl = document.querySelector( '#datetime-picker' );
 const buttonStartEl = document.querySelector( 'button[data-start]');
 const daysEl = document.querySelector( 'span[data-days]' );
 const hoursEl = document.querySelector( 'span[data-hours]' );
@@ -19,7 +19,7 @@ buttonStartEl.addEventListener( 'click', startTimer);
 const currentDate = new Date();
 let dateFromUsrer;
 
-flatpickr ( 'input', {
+flatpickr ( 'input[type="text"]', {
   enableTime: true,
   time_24hr: true,
   defaultDate: currentDate,
